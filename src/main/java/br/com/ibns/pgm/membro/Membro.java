@@ -17,7 +17,7 @@ public class Membro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String nome;
     private String telefone;
     private String email;
     private String  aniversario;
@@ -26,4 +26,11 @@ public class Membro {
     @Embedded
     private Endereco endereco;
 
+    public Membro(DadosMembro dados) {
+        this.nome =  dados.nome();
+        this.telefone = dados.telefone();
+        this.email = dados.email();
+        this.aniversario = dados.aniversario();
+        this.endereco =  new Endereco(dados.endereco());
+    }
 }
