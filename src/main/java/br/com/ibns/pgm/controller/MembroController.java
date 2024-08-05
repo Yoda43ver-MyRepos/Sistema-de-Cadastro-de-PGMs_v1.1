@@ -33,7 +33,14 @@ public class MembroController {
     public void atualizarMembro(@RequestBody @Valid DadosAtualizacaoMembros dados){
            var membro =  repository.getReferenceById(dados.id());
            membro.atualizarInformacoesMembro(dados);
-        System.out.println(membro.getEndereco().getNumero());
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void inativarMembro(@PathVariable Long id){
+          var medico = repository.getReferenceById(id);
+          medico.inativar();
+
     }
 
 }

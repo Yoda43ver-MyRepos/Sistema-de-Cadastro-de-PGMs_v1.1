@@ -26,17 +26,21 @@ public class Membro {
     @Embedded
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Membro(DadosMembro dados) {
+        this.ativo =  true;
         this.nome =  dados.nome();
         this.telefone = dados.telefone();
         this.email = dados.email();
         this.aniversario = dados.aniversario();
         this.endereco =  new Endereco(dados.endereco());
+
     }
 
     public void atualizarInformacoesMembro(DadosAtualizacaoMembros dados) {
         if(dados.nome() != null){
-            this.nome = dados.nome();
+           this.nome = dados.nome();
         }
         if(dados.telefone() != null){
             this.telefone = dados.telefone();
@@ -50,5 +54,9 @@ public class Membro {
         if(dados.endereco() != null){
             this.endereco.atualizarInformacoesEndereco(dados.endereco());
         }
+    }
+
+    public void inativar(){
+        this.ativo = false;
     }
 }
