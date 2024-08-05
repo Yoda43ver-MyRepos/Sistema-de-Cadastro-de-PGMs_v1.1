@@ -1,0 +1,1 @@
+RENAME  TABLE medicos TO membros;
