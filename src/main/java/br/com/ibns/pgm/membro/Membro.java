@@ -1,6 +1,8 @@
 package br.com.ibns.pgm.membro;
 
 
+import br.com.ibns.pgm.endereco.Endereco;
+
 public class Membro {
 
 
@@ -9,5 +11,7 @@ public class Membro {
     private String telefone;
     private String email;
     private String  aniversario;
+
+    private Endereco endereco;
 
 }
