@@ -33,4 +33,22 @@ public class Membro {
         this.aniversario = dados.aniversario();
         this.endereco =  new Endereco(dados.endereco());
     }
+
+    public void atualizarInformacoesMembro(DadosAtualizacaoMembros dados) {
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if(dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
+        if(dados.aniversario() != null){
+            this.aniversario = dados.aniversario();
+        }
+        if(dados.endereco() != null){
+            this.endereco.atualizarInformacoesEndereco(dados.endereco());
+        }
+    }
 }

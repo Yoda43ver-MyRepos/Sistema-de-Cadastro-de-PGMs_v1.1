@@ -1,10 +1,9 @@
 package br.com.ibns.pgm.controller;
 
-import br.com.ibns.pgm.membro.DadosListagemMembros;
-import br.com.ibns.pgm.membro.DadosMembro;
-import br.com.ibns.pgm.membro.Membro;
-import br.com.ibns.pgm.membro.MembroRepository;
+import br.com.ibns.pgm.membro.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +17,7 @@ public class MembroController {
     private MembroRepository repository;
 
     @PostMapping
+    @Transactional
     public void cadastrarMembro(@RequestBody DadosMembro dados){
        repository.save(new Membro(dados));
     }
@@ -26,6 +26,14 @@ public class MembroController {
     @GetMapping
     public List<DadosListagemMembros> listarMembros(){
         return repository.findAll().stream().map(DadosListagemMembros::new).toList();
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarMembro(@RequestBody @Valid DadosAtualizacaoMembros dados){
+           var membro =  repository.getReferenceById(dados.id());
+           membro.atualizarInformacoesMembro(dados);
+        System.out.println(membro.getEndereco().getNumero());
     }
 
 }
