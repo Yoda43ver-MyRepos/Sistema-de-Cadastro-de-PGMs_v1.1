@@ -3,6 +3,8 @@ package br.com.ibns.pgm.controller;
 import br.com.ibns.pgm.membro.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +26,16 @@ public class MembroController {
 
 
     @GetMapping
-    public List<DadosListagemMembros> listarMembros(){
-        return repository.findAll().stream().map(DadosListagemMembros::new).toList();
+    public Page<DadosListagemMembros> listarMembros(Pageable paginacao  ){
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMembros::new);
     }
+
+    @GetMapping("/inativos")
+    public Page<DadosListagemMembros> listarMembrosInativos (Pageable paginacao){
+        return repository.findAllByAtivoFalse(paginacao).map(DadosListagemMembros::new);
+    }
+
+
 
     @PutMapping
     @Transactional
@@ -40,7 +49,8 @@ public class MembroController {
     public void inativarMembro(@PathVariable Long id){
           var medico = repository.getReferenceById(id);
           medico.inativar();
-
     }
+
+
 
 }
