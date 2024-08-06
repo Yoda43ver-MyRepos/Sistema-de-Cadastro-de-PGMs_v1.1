@@ -8,7 +8,6 @@ public record DadosListagemMembros(
                 String email,
                 String aniversario) {
 
-
     public DadosListagemMembros(Membro membro){
         this(
                 membro.getId(),

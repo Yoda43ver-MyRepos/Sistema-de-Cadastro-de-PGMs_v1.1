@@ -8,12 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("membros")
 public class MembroController {
-
 
     @Autowired
     private MembroRepository repository;
@@ -23,34 +20,24 @@ public class MembroController {
     public void cadastrarMembro(@RequestBody DadosMembro dados){
        repository.save(new Membro(dados));
     }
-
-
     @GetMapping
     public Page<DadosListagemMembros> listarMembros(Pageable paginacao  ){
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMembros::new);
     }
-
     @GetMapping("/inativos")
     public Page<DadosListagemMembros> listarMembrosInativos (Pageable paginacao){
         return repository.findAllByAtivoFalse(paginacao).map(DadosListagemMembros::new);
     }
-
-
-
     @PutMapping
     @Transactional
     public void atualizarMembro(@RequestBody @Valid DadosAtualizacaoMembros dados){
            var membro =  repository.getReferenceById(dados.id());
            membro.atualizarInformacoesMembro(dados);
     }
-
     @DeleteMapping("/{id}")
     @Transactional
     public void inativarMembro(@PathVariable Long id){
           var medico = repository.getReferenceById(id);
           medico.inativar();
     }
-
-
-
 }

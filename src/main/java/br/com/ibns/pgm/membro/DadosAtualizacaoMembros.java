@@ -9,6 +9,5 @@ public record DadosAtualizacaoMembros(
         String email,
         String aniversario,
         DadosEndereco endereco
-
 ) {
 }

@@ -23,7 +23,5 @@ public record DadosMembro(
 
         @NotNull
         DadosEndereco endereco
-
-
 ) {
 }

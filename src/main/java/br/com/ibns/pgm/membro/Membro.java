@@ -1,6 +1,5 @@
 package br.com.ibns.pgm.membro;
 
-
 import br.com.ibns.pgm.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,10 +21,8 @@ public class Membro {
     private String email;
     private String  aniversario;
 
-
     @Embedded
     private Endereco endereco;
-
     private Boolean ativo;
 
     public Membro(DadosMembro dados) {
@@ -35,7 +32,6 @@ public class Membro {
         this.email = dados.email();
         this.aniversario = dados.aniversario();
         this.endereco =  new Endereco(dados.endereco());
-
     }
 
     public void atualizarInformacoesMembro(DadosAtualizacaoMembros dados) {

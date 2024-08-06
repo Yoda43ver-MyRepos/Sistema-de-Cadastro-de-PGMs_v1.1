@@ -8,6 +8,5 @@ import java.util.Optional;
 
 public interface MembroRepository extends JpaRepository<Membro,Long> {
     Page<Membro> findAllByAtivoTrue(Pageable paginacao);
-
     Page<Membro> findAllByAtivoFalse(Pageable paginacao);
 }
