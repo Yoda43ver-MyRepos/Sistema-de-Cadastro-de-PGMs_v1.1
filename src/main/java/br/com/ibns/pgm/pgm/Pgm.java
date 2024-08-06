@@ -23,10 +23,21 @@ public class Pgm {
 
     private Endereco endereco;
 
+    private Boolean ativo;
+
     public Pgm(DadosPgm dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.dia = dados.dia();
         this.hora = dados.hora();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void inativarPgm() {
+      this.ativo = false;
+    }
+
+    public void activatePgm() {
+        this.ativo = true;
     }
 }
