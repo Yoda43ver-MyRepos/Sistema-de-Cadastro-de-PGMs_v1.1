@@ -28,6 +28,5 @@ public class Pgm {
         this.dia = dados.dia();
         this.hora = dados.hora();
         this.endereco = new Endereco(dados.endereco());
-
     }
 }
