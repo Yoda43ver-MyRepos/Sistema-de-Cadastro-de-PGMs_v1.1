@@ -1,6 +1,8 @@
 package br.com.ibns.pgm.controller;
 
 import br.com.ibns.pgm.membro.*;
+import br.com.ibns.pgm.membro.Membro;
+import br.com.ibns.pgm.membro.MembroRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
