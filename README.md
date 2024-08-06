@@ -1,7 +1,8 @@
 # Sistema-de-Cadastro-de-PGMs_v1.0
 Aplicações web usando Spring Boot, criação de API REST e CRUD. Bibliotecas: Lombok e Flyway 
 
-![Captura de tela 2024-08-06 104850](https://github.com/user-attachments/assets/3a687a8b-4979-40fe-be8c-4b4fda6dba47)
+![Captura de tela 2024-08-06 131422](https://github.com/user-attachments/assets/f6ef8d4c-25db-4ab3-8de5-efcfe7b8f0da)
+
 
 <b>Tecnologias:</b>
 
