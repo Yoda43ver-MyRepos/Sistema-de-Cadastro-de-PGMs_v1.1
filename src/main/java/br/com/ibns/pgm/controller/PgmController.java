@@ -37,7 +37,7 @@ public class PgmController {
 
     @GetMapping
     public Page<DadosListagemPgms> listarPgms(Pageable pagination) {
-        return repository.findAll(pagination).map(DadosListagemPgms::new);
+        return repository.findAllByAtivoTrue(pagination).map(DadosListagemPgms::new);
     }
 
     @DeleteMapping("/{id}")

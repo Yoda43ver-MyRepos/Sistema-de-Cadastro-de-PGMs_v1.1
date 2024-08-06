@@ -5,6 +5,7 @@ public record DadosListagemPgms(
         String nome,
         String dia,
         String hora
+
 ) {
 
     public DadosListagemPgms(Pgm pgm){
@@ -13,6 +14,7 @@ public record DadosListagemPgms(
                 pgm.getNome(),
                 pgm.getDia(),
                 pgm.getHora()
+
         );
     }
 }
