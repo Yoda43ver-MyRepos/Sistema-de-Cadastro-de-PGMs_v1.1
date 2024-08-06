@@ -1,5 +1,7 @@
 package br.com.ibns.pgm.controller;
 
+import br.com.ibns.pgm.pgm.DadosPgm;
+import br.com.ibns.pgm.pgm.Pgm;
 import br.com.ibns.pgm.pgm.PgmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +19,8 @@ public class PgmController {
 
 
     @PostMapping
-    public void cadastrarPgm(@RequestBody String json){
-        System.out.println(json);
+    public void cadastrarPgm(@RequestBody DadosPgm dados){
+        repository.save(new Pgm(dados));
     }
 
 
