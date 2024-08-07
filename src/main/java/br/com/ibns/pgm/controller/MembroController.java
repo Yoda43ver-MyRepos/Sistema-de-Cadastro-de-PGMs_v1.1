@@ -19,7 +19,7 @@ public class MembroController {
 
     @PostMapping
     @Transactional
-    public void cadastrarMembro(@RequestBody DadosMembro dados){
+    public void cadastrarMembro(@RequestBody @Valid DadosMembro dados){
        repository.save(new Membro(dados));
     }
     @GetMapping
