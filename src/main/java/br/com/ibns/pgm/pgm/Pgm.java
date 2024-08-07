@@ -40,4 +40,20 @@ public class Pgm {
     public void activatePgm() {
         this.ativo = true;
     }
+
+    public void atualizarDadosPgm(DadosAtualizacaoPgms dados) {
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if(dados.dia() !=  null){
+            this.dia = dados.dia();
+        }
+        if(dados.hora() != null){
+            this.hora = dados.hora();
+        }
+        if(dados.endereco() != null){
+            this.endereco.atualizarInformacoesEndereco(dados.endereco());
+        }
+
+    }
 }

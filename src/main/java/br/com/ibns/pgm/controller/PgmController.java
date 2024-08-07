@@ -1,9 +1,6 @@
 package br.com.ibns.pgm.controller;
 
-import br.com.ibns.pgm.pgm.DadosListagemPgms;
-import br.com.ibns.pgm.pgm.DadosPgm;
-import br.com.ibns.pgm.pgm.Pgm;
-import br.com.ibns.pgm.pgm.PgmRepository;
+import br.com.ibns.pgm.pgm.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,6 +50,16 @@ public class PgmController {
         var pgm = repository.getReferenceById(id);
         pgm.activatePgm();
     }
+
+
+    @PutMapping
+    @Transactional
+    public void atualizarPgmDados(@RequestBody @Valid DadosAtualizacaoPgms dados){
+        var pgm = repository.getReferenceById(dados.id());
+        pgm.atualizarDadosPgm(dados);
+    }
+
+
 
 
 }
