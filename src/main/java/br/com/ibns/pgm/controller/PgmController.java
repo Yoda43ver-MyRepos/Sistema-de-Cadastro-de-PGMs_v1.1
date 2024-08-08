@@ -33,7 +33,7 @@ public class PgmController {
     */
 
     @GetMapping
-    public Page<DadosListagemPgms> listarPgms(Pageable pagination) {
+    public Page<DadosListagemPgms> listarPgms(@PageableDefault(size =10, sort ={"nome"}) Pageable pagination) {
         return repository.findAllByAtivoTrue(pagination).map(DadosListagemPgms::new);
     }
 

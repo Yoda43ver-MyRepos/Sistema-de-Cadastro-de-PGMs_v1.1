@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +24,12 @@ public class MembroController {
        repository.save(new Membro(dados));
     }
     @GetMapping
-    public Page<DadosListagemMembros> listarMembros(Pageable paginacao  ){
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMembros::new);
+    public Page<DadosListagemMembros> listarMembros(@PageableDefault(size =10, sort ={"nome"}) Pageable pagination){
+        return repository.findAllByAtivoTrue(pagination).map(DadosListagemMembros::new);
     }
     @GetMapping("/inativos")
-    public Page<DadosListagemMembros> listarMembrosInativos (Pageable paginacao){
-        return repository.findAllByAtivoFalse(paginacao).map(DadosListagemMembros::new);
+    public Page<DadosListagemMembros> listarMembrosInativos (@PageableDefault(size =10, sort ={"nome"}) Pageable pagination){
+        return repository.findAllByAtivoFalse(pagination).map(DadosListagemMembros::new);
     }
     @PutMapping
     @Transactional
